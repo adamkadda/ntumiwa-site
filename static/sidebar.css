@@ -1,0 +1,33 @@
+/* ===================
+   Sidebar
+=================== */
+
+:root {
+    --main-color: #0f171d;
+    --tablet: 800px;    
+}
+
+.sidebar {
+    background-color: var(--main-color);
+    z-index: 11;
+}
+
+@media (max-width: 799px) {
+    .sidebar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 80px;
+    }
+}
+
+@media (min-width: 800px) {
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 120px;
+    }
+}

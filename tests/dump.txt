@@ -1,0 +1,33 @@
+
+
+<section id="title">
+    <a href="https://nadiatumiwa.com">
+        <svg>
+            <use href="/static/images/logo.svg#logo"></use>
+        </svg>
+    </a>
+    <span class="hidden">Nadia Tumiwa</span>
+</section>
+
+#title a {
+   width: 160px;
+   height: 60px;
+
+   z-index: 13;
+
+   position: absolute;
+}
+
+#title a {
+    top: 10px;
+    right: 40px;
+
+    background-color: var(--anti-flash);
+}
+
+#title a {
+    top: 10px;
+    left: 160px;
+
+    background-color: var(--main-color);
+}
