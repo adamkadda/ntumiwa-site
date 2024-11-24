@@ -31,3 +31,29 @@
 
     background-color: var(--main-color);
 }
+
+clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 10.4vw));
+
+&:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.42) 0%,   /* black with 42% opacity */
+        rgba(0, 0, 0, 0) 30%,     /* black with 0% opacity */
+        rgba(0, 0, 0, 0) 60%,     /* black with 0% opacity */
+        rgba(0, 0, 0, 0.83) 100%  /* black with 83% opacity */
+    );
+    z-index: 15;
+}
+ 
+<blockquote>
+    Shaped by her roots Indonesian roots, Nadia discovered her love for the piano at age six. She later refined her artistry with a Master of Music at Codarts University of the Arts.
+    <footer>
+        <cite></cite>
+    </footer>
+</blockquote>

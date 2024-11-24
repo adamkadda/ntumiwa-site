@@ -1,9 +1,50 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<link rel="stylesheet" href="/static/css/intro.css">
+{% endblock %}
+
 {% block title %}Nadia Tumiwa{% endblock %}
 
 {% block content %}
-<section id="introduction"></section>
+<section id="introduction">
+    <style>
+        @media (max-width: 1069px) {
+            .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_1320x990.jpg");
+            }
+        }
+        @media (min-width: 1070px) and (max-width: 1333px){
+            .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_1584x1188.jpg");
+            }
+        }
+        @media (min-width: 1334px) and (max-width: 1861px){
+            .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_2112x1584.jpg");
+            }
+        }
+        @media (min-width: 1862px) {
+            .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_2640x1980.jpg");
+            }
+        }
+        .bg-image {
+            background-position: 45% center;
+        }
+    </style>
+    <header class="page-header padded">
+        <div class="bg-image"></div>
+        <div class="page-header-wrapper">
+            <blockquote>
+                Shaped by her Indonesian roots, Nadia discovered her love for the piano at age six. She later refined her artistry with a Master of Music at Codarts University of the Arts.
+                <footer>
+                    <cite></cite>
+                </footer>
+            </blockquote>
+        </div>
+    </header>
+</section>
 <section id="brief-biography"></section>
 <section id="upcoming-performances"></section>
 <section id="latest-photos"></section>
