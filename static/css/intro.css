@@ -2,29 +2,15 @@
             Introduction
 ================================= */
 
-.padded { padding-bottom: 7.2vw; }
-
-@media (max-width: 1333px) {
-    .padded {
-        padding-left: 3vw;
-        padding-right: 3vw;
-    }
-}
-
-@media (min-width: 1334px) {
-    .padded {
-        padding-left: 50px;
-        padding-right: 50px;
-    }
-}
-
-.page-header {
-    position: relative;
+#introduction .container {
     height: 100vmin;
-    max-height: 100vh;
+}
 
-    display: flex;
-    justify-content: center;
+@media (orientation: portrait) {
+    #introduction .container {
+        height: 130vmin;
+        max-height: 100vh;
+    }
 }
 
 .bg-image {
@@ -36,21 +22,17 @@
     bottom: 0;
     left: 0;
 
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 10.4vw));
-
     z-index: 10;
 }
 
-.page-header-wrapper {
+#introduction .wrapper {
     position: relative;
+    
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     text-align: center;
-
-    width: 100%;
-    max-width: 1140px;
-
+    
     z-index: 30;
 }
 
@@ -64,8 +46,15 @@ blockquote {
 
     margin-left: auto;
     margin-right: auto;
+
+    
 }
 
 @media (min-width: 1100px) {
     blockquote { font-size: 30px; }
+}
+
+.blur-backdrop {
+    background: rgba(0, 0, 0, 0.01);
+    backdrop-filter: blur(2px);
 }

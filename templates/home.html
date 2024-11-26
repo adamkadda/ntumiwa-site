@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block styles %}
+<link rel="stylesheet" href="/static/css/base.css">
 <link rel="stylesheet" href="/static/css/intro.css">
 {% endblock %}
 
@@ -30,20 +31,17 @@
             }
         }
         .bg-image {
-            background-position: 45% center;
+            background-position: 44% center;
         }
     </style>
-    <header class="page-header padded">
+    <div class="container padded">
         <div class="bg-image"></div>
-        <div class="page-header-wrapper">
-            <blockquote>
-                Shaped by her Indonesian roots, Nadia discovered her love for the piano at age six. She later refined her artistry with a Master of Music at Codarts University of the Arts.
-                <footer>
-                    <cite></cite>
-                </footer>
+        <div class="wrapper">
+            <blockquote class="blur-backdrop">
+                Shaped by her roots Indonesian roots, Nadia discovered her love for the piano at age six. She later refined her artistry with a Master of Music at Codarts University of the Arts.
             </blockquote>
         </div>
-    </header>
+    </div>
 </section>
 <section id="brief-biography"></section>
 <section id="upcoming-performances"></section>
