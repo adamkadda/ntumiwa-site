@@ -21,10 +21,27 @@ body {
    font-family: Helvetica, Arial, sans-serif;
    font-style: normal;
    background-color: var(--main-dark);
-   color: var(--main-light);
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    text-rendering: optimizeLegibility;
+}
+
+@media (min-width: 499px){
+   body {
+       font-size: 16px;
+   }
+}
+
+@media (min-width: 500px) and (max-width: 899px) {
+   body {
+       font-size: 17px;
+   }
+}
+
+@media (min-width: 900px) and (max-width: 1099px) {
+   body {
+       font-size: 19px;
+   }
 }
 
 .frozen { overflow: hidden; }
@@ -213,8 +230,9 @@ li {
    list-style: none;
 }
 
-a {
+.link a {
    color: var(--main-light);
+   font-weight: 600;
    margin: 0;
    text-decoration: none;
 }

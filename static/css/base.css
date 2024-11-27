@@ -1,11 +1,6 @@
 .container {
     display: flex;
-    justify-content: center;
     position: relative;
-}
-
-.padded {
-    padding-bottom: 7.2vw;
 }
 
 @media (max-width: 1333px) {

@@ -1,0 +1,74 @@
+
+
+#brief-biography .bg-image {
+    margin-top: -10.4vw;
+    background-position: right top;
+    clip-path: polygon(0 0, 100% 10.4vw, 100% 100%, 0 100%);
+
+    z-index: 10;
+}
+
+#brief-biography .wrapper {
+    z-index: 20;
+}
+
+#brief-biography .padded {
+    padding-bottom: 80px;
+}
+
+@media (max-width: 1259) {
+    #brief-biography .wrapper {
+        width: 45%;
+    }
+}
+
+@media (min-width: 1260px) {
+    #brief-biography .wrapper {
+        color: white;
+        width: 40%;
+    }
+
+    #brief-biography a {
+        color: white;
+        border-color: white;
+    }
+
+    #brief-biography .padded {
+        padding-bottom: 120px;
+    }
+}
+
+#brief-biography h1 {
+    font-size: 60px;
+    font-weight: 700;
+    margin: 0px;
+
+    margin-bottom: 1em;
+}
+
+.short-text {
+    font-size: 19px;
+    line-height: 1.6;
+    font-weight: 400;
+
+    margin-top: 2em;
+    margin-bottom: 3.5em;
+}
+
+.read-more {
+    text-decoration: none;
+
+    color: black;
+    font-size: 14px;
+    font-weight: 600;;
+
+    text-transform: uppercase;
+
+    padding: 16px 32px;
+    letter-spacing: 0.05em;
+    border: 1px solid black;
+}
+
+.read-more:hover {
+    opacity: 0.4;
+}

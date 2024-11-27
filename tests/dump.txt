@@ -57,3 +57,16 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 10.4vw));
         <cite></cite>
     </footer>
 </blockquote>
+
+.read-more {
+    text-decoration: none;
+    font-size: 19px;
+    border: 1px solid white;
+    padding: 16px 32px;
+    font-variant: small-caps;
+    font-weight: 600;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+}
+
+<a class="read-more" href="/biography">Read more</a>

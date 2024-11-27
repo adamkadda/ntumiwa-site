@@ -3,6 +3,7 @@
 {% block styles %}
 <link rel="stylesheet" href="/static/css/base.css">
 <link rel="stylesheet" href="/static/css/intro.css">
+<link rel="stylesheet" href="/static/css/bio.css">
 {% endblock %}
 
 {% block title %}Nadia Tumiwa{% endblock %}
@@ -11,26 +12,26 @@
 <section id="introduction">
     <style>
         @media (max-width: 1069px) {
-            .bg-image {
+            #introduction .bg-image {
                 background-image: url("/static/images/Nadia_Tumiwa_7246_1320x990.jpg");
             }
         }
         @media (min-width: 1070px) and (max-width: 1333px){
-            .bg-image {
+            #introduction .bg-image {
                 background-image: url("/static/images/Nadia_Tumiwa_7246_1584x1188.jpg");
             }
         }
         @media (min-width: 1334px) and (max-width: 1861px){
-            .bg-image {
+            #introduction .bg-image {
                 background-image: url("/static/images/Nadia_Tumiwa_7246_2112x1584.jpg");
             }
         }
         @media (min-width: 1862px) {
-            .bg-image {
+            #introduction .bg-image {
                 background-image: url("/static/images/Nadia_Tumiwa_7246_2640x1980.jpg");
             }
         }
-        .bg-image {
+        #introduction .bg-image {
             background-position: 44% center;
         }
     </style>
@@ -43,7 +44,32 @@
         </div>
     </div>
 </section>
-<section id="brief-biography"></section>
+<section id="brief-biography">
+    <style>
+        @media (max-width: 1260px) {
+            #brief-biography .bg-image {
+                background-image: none;
+                background-color: #C2C1C1;
+            }
+        }
+        @media (min-width: 1261px){
+            #brief-biography .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7222_2200x1467.jpg");
+            }
+        }
+    </style>
+    <div class="container padded">
+        <div class="bg-image"></div>
+        <div class="wrapper">
+            <h1>Biography</h1>
+            <div class="short-text">
+                <p>Nadia Tumiwa began her musical journey at the age of six, learning piano under the tutelage of her mother. In 2020, she graduated with a Bachelor's degree in Classical Piano Performance from Universitas Pelita Harapan Conservatory of Music, where she studied under Amelia Santoso. She later continued refining her artistry with a Master of Music at Codarts University of the Arts, under Nino Gvetadze.</p>
+                <p>Nadia Tumiwa is an accomplished solo pianist and chamber musician. Since 2022, she has been a member of Essenza Ensemble, an eclectic chamber quintet based in the Netherlands. Essenza is affiliated with the Nederlandse Strijkkwartet Academie (NSKA) and develops under the guidance of Marc Danel. Nadia Tumiwa co-founded Sonora Quatre-mains in 2024, a piano duet focused on presenting the works of female composers.</p>
+            </div>
+            <a class="read-more" href="/biography">Read more</a>
+        </div>
+    </div>
+</section>
 <section id="upcoming-performances"></section>
 <section id="latest-photos"></section>
 <section id="video-preview"></section>
