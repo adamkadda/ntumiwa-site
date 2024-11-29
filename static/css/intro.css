@@ -69,3 +69,9 @@ blockquote {
     background: rgba(0, 0, 0, 0.01);
     backdrop-filter: blur(1px);
 }
+
+@media (max-width: 1069px) {
+    .blur-backdrop {
+        backdrop-filter: blur(3px);
+    }
+}
