@@ -38,7 +38,7 @@ body {
    }
 }
 
-@media (min-width: 900px) and (max-width: 1099px) {
+@media (min-width: 900px) {
    body {
        font-size: 19px;
    }

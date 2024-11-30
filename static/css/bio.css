@@ -13,6 +13,7 @@
 }
 
 #brief-biography .padded {
+    padding-top: 0;
     padding-bottom: 60px;
 }
 
@@ -34,20 +35,32 @@
     }
 
     #brief-biography .padded {
+        padding-top: 60px;
         padding-bottom: 120px;
     }
 }
 
 #brief-biography h1 {
-    font-size: 60px;
+    font-size: 40px;
     font-weight: 700;
     margin: 0px;
 
     margin-bottom: 1em;
 }
 
+@media (min-width: 600px) {
+    #brief-biography h1 {
+        font-size: calc(40px + 20*((100vw - 600px) / 500));
+    }
+}
+
+@media (min-width: 1100px) {
+    #brief-biography h1 {
+        font-size: 60px;
+    }
+}
+
 .short-text {
-    font-size: 19px;
     line-height: 1.6;
     font-weight: 400;
 
@@ -67,6 +80,8 @@
     padding: 16px 32px;
     letter-spacing: 0.05em;
     border: 1px solid black;
+    
+    display: inline-block;
 }
 
 .read-more:hover {
