@@ -70,3 +70,26 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 10.4vw));
 }
 
 <a class="read-more" href="/biography">Read more</a>
+
+<body>
+    <header>
+        <div class="sidebar">
+            <button id="hamburger"></button>
+        </div>
+        <nav></nav>
+    </header>
+    <main>
+        <header>
+            <h1><a href="/">Some Name</a></h1>
+        </header>
+        . . . content
+    </main>
+    <footer></footer>
+</body>
+
+<h1><a href="/">Nadia Tumiwa</a></h1>
+
+<blockquote class="blur-backdrop">
+    Shaped by her roots Indonesian roots, Nadia discovered her love for the piano at age six. She later refined her artistry with a Master of Music at Codarts University of the Arts.
+</blockquote>
+

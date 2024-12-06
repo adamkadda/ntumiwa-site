@@ -40,7 +40,7 @@
     }
 }
 
-#brief-biography h1 {
+#brief-biography h2 {
     font-size: 40px;
     font-weight: 700;
     margin: 0px;
@@ -49,13 +49,13 @@
 }
 
 @media (min-width: 600px) {
-    #brief-biography h1 {
+    #brief-biography h2 {
         font-size: calc(40px + 20*((100vw - 600px) / 500));
     }
 }
 
 @media (min-width: 1100px) {
-    #brief-biography h1 {
+    #brief-biography h2 {
         font-size: 60px;
     }
 }

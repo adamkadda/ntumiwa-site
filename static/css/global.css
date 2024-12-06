@@ -3,8 +3,8 @@
 ================================= */
 
 :root {
-   --main-dark: black;
-   --main-light: white;
+   --main-dark: #07080d;
+   --main-light: #F2F4F3;
    --hamburger-size: 40px;
    --span-height: 5px;
    --nav-small: 480px;
@@ -20,7 +20,7 @@ body {
    padding: 0;
    font-family: Helvetica, Arial, sans-serif;
    font-style: normal;
-   background-color: var(--main-dark);
+   background-color: black;
    -webkit-font-smoothing: antialiased;
    -moz-osx-font-smoothing: grayscale;
    text-rendering: optimizeLegibility;
@@ -81,7 +81,7 @@ main {
    }
 
    main.moved {
-      transform: translateX(var(--nav-small));
+      transform: translateX(360px);
       opacity: 0.25;
    }
 }
