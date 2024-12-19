@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="/static/css/base.css">
 <link rel="stylesheet" href="/static/css/intro.css">
 <link rel="stylesheet" href="/static/css/bio.css">
+<link rel="stylesheet" href="/static/css/perf.css">
 {% endblock %}
 
 {% block title %}Nadia Tumiwa{% endblock %}
@@ -64,11 +65,68 @@
                 <p>Nadia Tumiwa began her musical journey at the age of six, learning piano under the tutelage of her mother. In 2020, she graduated with a Bachelor's degree in Classical Piano Performance from Universitas Pelita Harapan Conservatory of Music, where she studied under Amelia Santoso. She later continued refining her artistry with a Master of Music at Codarts University of the Arts, under Nino Gvetadze.</p>
                 <p>Nadia Tumiwa is an accomplished solo pianist and chamber musician. Since 2022, she has been a member of Essenza Ensemble, an eclectic chamber quintet based in the Netherlands. Essenza is affiliated with the Nederlandse Strijkkwartet Academie (NSKA) and develops under the guidance of Marc Danel. Nadia Tumiwa co-founded Sonora Quatre-mains in 2024, a piano duet focused on presenting the works of female composers.</p>
             </div>
-            <a class="read-more" href="/biography">Read more</a>
+            <a class="box-link" href="/biography">Read more</a>
         </div>
     </div>
 </section>
-<section id="upcoming-performances"></section>
+<section id="upcoming-performances">
+    <div class="container padded">
+        <div class="wrapper">
+            <div class="section-title">
+                <h2>Performances</h2>
+            </div>
+            <div class="events">
+                <article class="first performance">
+                    <div class="description">
+                        <h3 class="title">Talent Break</h3>
+                        <h4 class="venue">De Doelen, Rotterdam</h4>
+                        <ol class="programme">
+                            <li class="piece"><span class="composer">Schoenberg</span>: Chamber Symphony No.1, Op.9</li>
+                        </ol>
+                    </div>
+                    <time class="passed" datetime="2024-04-03 12:30">April 3, 2024</time>
+                    <div class="ticketing">
+                        <a class="buy-tickets sold-out">Sold out</a>
+                    </div>
+                </article>
+                <article class="performance">
+                    <div class="description">
+                        <h3 class="title">Muziekfestival ZOOM!</h3>
+                        <h4 class="venue">Landgoed Middachten, De Steeg</h4>
+                        <ol class="programme">
+                            <li class="piece"><span class="composer">Chausson</span>: Concert for Violin, Piano and String Quartet, Op.21</li>
+                            <li class="piece"><span class="composer">Sibelius</span>: Valse Triste</li>
+                            <li class="piece"><span class="composer">Ravel</span>: Alborada del Gracioso</li>
+                            <li class="piece"><span class="composer">Auric</span>: Adieu, New York!</li>
+                        </ol>
+                    </div>
+                    <time class="passed" datetime="2024-06-08 09:00">June 8, 2024</time>
+                    <div class="ticketing">
+                        <a class="buy-tickets sold-out" href="">Sold out</a>
+                    </div>
+                </article>
+                <article class="performance">
+                    <div class="description">
+                        <h3 class="title">Weihnachtskonzert Essenza</h3>
+                        <h4 class="venue">Pâtisserie Johanna, Hamburg</h4>
+                        <ol class="programme">
+                            <li class="piece"><span class="composer">Chausson</span>: Concert for Violin, Piano and String Quartet, Op.21</li>
+                            <li class="piece"><span class="composer">Bruch</span>: 8 Pieces for Clarinet, Cello and Piano, Op.83</li>
+                            <li class="piece"><span class="composer">Auric</span>: Adieu, New York!</li>
+                        </ol>
+                    </div>
+                    <time datetime="2024-12-15 11:00">December 15, 2024</time>
+                    <div class="ticketing">
+                        <a class="buy-tickets" href="">Tickets</a>
+                    </div>
+                </article>
+            </div>
+            <div class="container">
+                <a class="box-link jcc" href="/performances">View more</a>
+            </div>
+        </div>
+    </div>
+</section>
 <section id="latest-photos"></section>
 <section id="video-preview"></section>
 {% endblock %}

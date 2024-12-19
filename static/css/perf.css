@@ -1,0 +1,249 @@
+#upcoming-performances .container {
+    justify-content: center;
+}
+
+#upcoming-performances {
+    background-color: var(--main-light);
+
+    /* 
+    There seems to be a gap in between
+    sections. This gap takes the color
+    the <body>, therefore I cannot deal
+    with it directly. That's why I have
+    opted to use a 10px negative margin
+    */
+
+    margin-top: -10px;
+}
+
+#upcoming-performances .wrapper {
+    /* 
+    This 10px margin was included to 
+    offset the 10px negative margin 
+    applied unto the <section> with
+    id="upcoming-performances"
+    */
+
+    margin-top: 10px;
+}
+
+/* =================================
+            Section Title
+================================= */
+
+.section-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+#upcoming-performances h2 {
+    font-size: 40px;
+    font-weight: 700;
+    margin: 0px;
+}
+
+@media (min-width: 600px) {
+    #upcoming-performances h2 {
+        font-size: calc(40px + 20*((100vw - 600px) / 500));
+    }
+}
+
+@media (min-width: 1100px) {
+    #upcoming-performances h2 {
+        font-size: 60px;
+    }
+}
+
+/* =================================
+               Padding
+================================= */
+
+#upcoming-performances .padded {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+/* =================================
+             Performance
+================================= */
+
+.performance {
+    display: flex;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    cursor: pointer;
+}
+
+.first {
+    border-top: 1px solid #C2C1C1;
+}
+
+.performance .description {
+    display: inline-block;
+}
+
+.performance time {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.passed {
+    text-decoration: line-through;
+}
+
+.performance .title {
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1;
+    margin: 0px;
+}
+
+.performance .venue {
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 1;
+    
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.performance .programme {
+    margin: 0px;
+    margin-top: 20px;
+
+    padding: 0px;
+}
+
+.piece {
+    margin-top: 2.5px;
+    margin-bottom: 2.5px;
+}
+
+.piece .composer {
+    font-weight: 600;
+}
+
+.ticketing {
+    display: inline-block;
+}
+
+.buy-tickets {
+    color: var(--main-dark);
+
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    line-height: 1;
+
+    display: inline-block;
+
+    border-bottom: 1px solid var(--main-dark);
+}
+
+.sold-out {
+    cursor: default;
+}
+
+@media (max-width: 1099px) {
+    .performance {
+        flex-direction: column;
+        flex-wrap: wrap;
+    
+        border-bottom: 1px solid #C2C1C1;
+    }
+
+    .performance time {
+        order: 1;
+    }
+
+    .performance .description {
+        order: 2;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .ticketing {
+        order: 3;
+    }
+
+    .buy-tickets {
+        font-size: 15px;
+        padding-bottom: 2px;
+    }
+}
+
+@media (min-width: 1100px) {
+    .events {
+        padding-top: 30px;
+    }
+
+    .performance {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 30px;
+
+        border-bottom: 1px solid #C2C1C1;
+    }
+    
+    .performance time {
+        order: 1;
+        flex-shrink: 0;
+        width: 210px;
+    }
+
+    .performance .description {
+        order: 2;
+        flex-shrink: 0;
+        width: 530px;
+    }
+
+    .performance .ticketing {
+        order: 3;
+        flex-shrink: 0;
+        width: 120px;
+        height: 18px;
+
+        display: flex;
+        justify-content: end;
+    }
+
+    .buy-tickets {
+        font-size: 17px;
+    }
+}
+
+/* =================================
+             Box link
+================================= */
+
+.box-link {
+    text-decoration: none;
+
+    color: black;
+    font-size: 14px;
+    font-weight: 600;;
+
+    text-transform: uppercase;
+
+    padding: 16px 32px;
+    letter-spacing: 0.05em;
+    border: 1px solid black;
+    
+    display: inline-block;
+}
+
+.box-link:hover {
+    opacity: 0.4;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+#upcoming-performances .box-link {
+    margin-top: 50px;
+}
