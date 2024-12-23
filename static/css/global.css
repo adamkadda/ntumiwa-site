@@ -293,10 +293,6 @@ svg {
       line-height: 90px;
    }
 
-   .social-items {
-      margin-top: 40px;
-   }
-
    .icon:nth-child(n+2) {
       margin-left: 30px;
    }
@@ -304,5 +300,105 @@ svg {
    svg {
       width: 30px;
       height: 30px;
+   }
+}
+
+/* =================================
+                Footer
+================================= */
+
+footer {
+   background-color: var(--main-dark);
+   line-height: 1;
+}
+
+footer .title {
+   color: var(--main-light);
+   text-transform: lowercase;
+   font-size: 35px;
+   font-weight: 700;
+   letter-spacing: 0.05rem;
+
+   margin: 0px;
+   padding: 0px;
+}
+
+footer .note {
+   color: var(--main-light);
+   display: flex;
+   flex-direction: column;
+
+   text-transform: lowercase;
+
+   letter-spacing: 0.05rem;
+   font-weight: 500;
+}
+
+@media (max-width: 1249px) {
+   footer .container {
+      justify-content: center;
+   }
+
+   footer .padded {
+      padding: 40px 40px;
+   }
+
+   footer .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+   }
+
+   footer .title {
+      text-align: center;
+   }
+
+   footer .social-items {
+      margin-top: 40px;
+      justify-content: center;
+   }
+
+   footer .note {
+      text-align: center;
+      margin-top: 40px;
+   }
+}
+
+@media (min-width: 800px) {
+   footer {
+      padding-left: 120px;
+   }
+}
+
+@media (min-width: 1250px) {   
+   footer .container {
+      justify-content: center;
+   }
+   
+   footer .padded {
+      padding: 40px;
+   }
+
+   footer .wrapper {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      max-width: 100vw;
+   }
+
+   footer .socials {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+   }
+
+   footer svg {
+      width: 20px;
+      height: 20px;
+   }
+
+   footer .note {
+      text-align: right;
    }
 }
