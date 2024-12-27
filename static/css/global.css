@@ -126,79 +126,79 @@ main {
 ================================= */
 
 #hamburger {
-    background-color: transparent;
+   background-color: transparent;
 
-    width: var(--hamburger-size);
-    height: var(--hamburger-size);
-    cursor: pointer;
-    position: relative;
-    top: 22.5px;
-    left: var(--hamburger-size);
+   width: var(--hamburger-size);
+   height: var(--hamburger-size);
+   cursor: pointer;
+   position: relative;
+   top: 22.5px;
+   left: var(--hamburger-size);
 
-    border: 0;
-    padding: 0;
+   border: 0;
+   padding: 0;
 
-    -ms-user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+   -ms-user-select: none;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   user-select: none;
 }
 
 #hamburger span {
-    display: block;
-    
-    height: var(--span-height);
-    width: 100%;
+   display: block;
+   
+   height: var(--span-height);
+   width: 100%;
 
-    -webkit-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    transform: rotate(0deg);
+   -webkit-transform: rotate(0deg);
+   -ms-transform: rotate(0deg);
+   transform: rotate(0deg);
 
-    -webkit-transition: .5s ease;
-    transition: .5s ease;
-    
-    position: absolute;
-    
-    background-color: var(--main-light);
-    border: none;
-    opacity: 1;
-    left: 0;
+   -webkit-transition: .5s ease;
+   transition: .5s ease;
+   
+   position: absolute;
+   
+   background-color: var(--main-light);
+   border: none;
+   opacity: 1;
+   left: 0;
 }
 
 #hamburger span:nth-child(1) {
-    top: 0px;
-    -webkit-transform-origin: left center;
-    -ms-transform-origin: left center;
-    transform-origin: left center;
+   top: 0px;
+   -webkit-transform-origin: left center;
+   -ms-transform-origin: left center;
+   transform-origin: left center;
 }
 
 #hamburger.open span:nth-child(1) {
-    transform: rotate(45deg);
+   transform: rotate(45deg);
 }
 
 #hamburger span:nth-child(2) {
-    top: calc(var(--span-height) * 2.75);
-    -webkit-transform-origin: left center;
-    -ms-transform-origin: left center;
-    transform-origin: left center;
+   top: calc(var(--span-height) * 2.75);
+   -webkit-transform-origin: left center;
+   -ms-transform-origin: left center;
+   transform-origin: left center;
 }
 
 #hamburger.open span:nth-child(2) {
-    width: 0%;
-    opacity: 0;
+   width: 0%;
+   opacity: 0;
 }
 
 #hamburger span:nth-child(3) {
-    top: calc(var(--span-height) * 5.5);
-    -webkit-transform-origin: left center;
-    -ms-transform-origin: left center;
-    transform-origin: left center;
+   top: calc(var(--span-height) * 5.5);
+   -webkit-transform-origin: left center;
+   -ms-transform-origin: left center;
+   transform-origin: left center;
 }
 
 #hamburger.open span:nth-child(3) {
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    transform: rotate(-45deg);
+   -webkit-transform: rotate(-45deg);
+   -ms-transform: rotate(-45deg);
+   transform: rotate(-45deg);
 }
 
 /* =================================
@@ -234,6 +234,11 @@ nav.open {
 
 li {
    list-style: none;
+}
+
+nav a:hover {
+   opacity: 0.4;
+   cursor: pointer;
 }
 
 .link a {
@@ -286,11 +291,20 @@ svg {
       padding: 80px 0px 0px 120px;
       width: var(--nav-small);
    }
+
+   .nav-inner {
+      margin-top: 60px;
+      margin-left: 40px;
+   }
    
    .nav-items {
       font-size: 30px;
       font-weight: 500;
       line-height: 90px;
+   }
+
+   .social-items {
+      margin-top: 30px;
    }
 
    .icon:nth-child(n+2) {
@@ -301,6 +315,53 @@ svg {
       width: 30px;
       height: 30px;
    }
+}
+
+/* =================================
+            Header Title
+================================= */
+
+.page-title {
+   position: absolute;
+}
+
+@media (max-width: 799px) {
+   .page-title {
+      z-index: 12;
+      top: 20px;
+      right: 20px;
+   }
+
+   h1 {
+      font-size: 30px;
+   }
+}
+
+@media (min-width: 800px) {
+   .page-title {
+      position: absolute;
+      z-index: 12;
+      top: 20px;
+      right: 40px;
+   }
+
+   h1 {
+      font-size: 35px;
+   }
+}
+
+.page-title a {
+   text-decoration: none;
+}
+
+h1 {
+   color: var(--main-light);
+   text-transform: lowercase;
+   font-weight: 700;
+   letter-spacing: 0.05rem;
+
+   margin: 0px;
+   padding: 0px;
 }
 
 /* =================================

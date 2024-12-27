@@ -3,6 +3,31 @@
     background-color: #e9eaec;
 }
 
+#contact {
+    background-color: var(--main-light);
+
+    /* 
+    There seems to be a gap in between
+    sections. This gap takes the color
+    the <body>, therefore I cannot deal
+    with it directly. That's why I have
+    opted to use a 10px negative margin
+    */
+
+    margin-top: -10px;
+}
+
+#contact .wrapper {
+    /* 
+    This 10px margin was included to 
+    offset the 10px negative margin 
+    applied unto the <section> with
+    id="upcoming-performances"
+    */
+
+    margin-top: 10px;
+}
+
 /* =================================
             Section Title
 ================================= */

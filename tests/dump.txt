@@ -147,3 +147,20 @@ clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 10.4vw));
         <a class="buy-tickets" href="">Tickets</a>
     </div>
 </article>
+
+<body>
+    <header>
+        <div class="sidebar">
+            <button id="hamburger">
+            </button>
+        </div>
+    </header>
+    <main>
+        <div class="page-title">
+            <a href="/" target="_blank"><h1>
+                Firstname Lastname
+            </h1></a>
+        </div>
+        {% block content %}{% endblock %}
+    </main>
+</body>
