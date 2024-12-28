@@ -445,7 +445,7 @@ footer .note {
       align-items: flex-end;
       justify-content: space-between;
 
-      max-width: 100vw;
+      width: 100%;
    }
 
    footer .socials {
