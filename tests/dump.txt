@@ -1,5 +1,3 @@
-
-
 <section id="title">
     <a href="https://nadiatumiwa.com">
         <svg>
