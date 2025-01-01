@@ -14,7 +14,7 @@
         <!-- Stylesheets -->
         <link rel="stylesheet" href="/static/css/base.css">
         {% block styles %}{% endblock %}
-    
+
         <!-- Favicon and Icons -->
     
         <!-- Scripts -->
@@ -109,10 +109,13 @@
                     </div>
                     <div class="note">
                         <span>Website made by Adam Kadda</span>
-                        <span>© 2024 Nadia Tumiwa. ALL RIGHTS RESERVED</span>
+                        <span>© <span id="year"></span> Nadia Tumiwa. ALL RIGHTS RESERVED</span>
                     </div>
                 </div>
             </div>
         </footer>
+        <script>
+            document.getElementById('year').textContent = new Date().getFullYear();
+        </script>
     </body>
 </html>

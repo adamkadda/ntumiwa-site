@@ -54,7 +54,7 @@
 @media (min-width: 1250px) {
     #brief-biography .padded {
         padding-top: 60px;
-        padding-bottom: 120px;
+        padding-bottom: 260px;
     }
     
     #brief-biography .wrapper {
@@ -84,7 +84,7 @@
     clip-path: polygon(0 0, 100% 10.4vw, 100% 100%, 0 100%);
     margin-top: -10.4vw;
 
-    background-position: center center;
+    background-position: top center;
 }
 
 /* section title */
@@ -159,7 +159,7 @@
 #upcoming-performances .section-title {
     justify-content: center;
 
-    margin-bottom: 4em;
+    margin-bottom: 3em;
 }
 
 /* performance */
@@ -168,8 +168,6 @@
     display: flex;
     padding-top: 30px;
     padding-bottom: 30px;
-
-    cursor: pointer;
 }
 
 .first {
@@ -378,10 +376,14 @@
 
 .card .phone {
     font-weight: 700;
+    color: inherit;
+    text-decoration: none;
 }
 
 .card .email {
     font-weight: 700;
+    color: inherit;
+    text-decoration: none;
 }
 
 .card .location {
@@ -389,4 +391,24 @@
 
     text-transform: lowercase;
     font-weight: 500;
+}
+
+@media (max-width: 549px) {
+    .card {
+        display: flex;
+        flex-direction: column;
+
+        max-width: 300px;
+        max-height: 300px;
+
+        padding: 15px 20px;
+    }
+
+    .card .position {
+        margin-bottom: 70px;
+    }
+
+    .card .location {
+        margin-top: 80px;
+    }
 }
