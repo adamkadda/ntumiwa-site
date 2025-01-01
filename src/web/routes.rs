@@ -8,8 +8,6 @@ pub fn router() -> Router {
         .route("/", get(home))
         .route("/biography", get(biography))
         .route("/performances", get(performances))
-        .route("/photos", get(photos))
-        .route("/videos", get(videos))
         .route("/contact", get(contact))
 }
 
@@ -28,18 +26,6 @@ async fn biography() -> impl IntoResponse {
 async fn performances() -> impl IntoResponse {
     println!("->> {:<12} - performances", "HANDLER");
     let template = templates::PerformancesTemplate;
-    Html(template.render().unwrap())
-}
-
-async fn photos() -> impl IntoResponse {
-    println!("->> {:<12} - photos", "HANDLER");
-    let template = templates::PhotosTemplate;
-    Html(template.render().unwrap())
-}
-
-async fn videos() -> impl IntoResponse {
-    println!("->> {:<12} - videos", "HANDLER");
-    let template = templates::VideosTemplate;
     Html(template.render().unwrap())
 }
 

@@ -1,12 +1,91 @@
 {% extends "base.html" %}
 
 {% block styles %}
-<link rel="stylesheet" href="/static/css/base.css">
-<link rel="stylesheet" href="/static/css/performances.css">
+<link rel="stylesheet" href="/static/css/perf.css">
 {% endblock %}
 
 {% block title %}Performances - Nadia Tumiwa{% endblock %}
 
 {% block content %}
-
+<section id="introduction">
+    <style>
+        @media (max-width: 1069px) {
+            #introduction .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_1320x990.jpg");
+            }
+        }
+        @media (min-width: 1070px) and (max-width: 1333px){
+            #introduction .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_1584x1188.jpg");
+            }
+        }
+        @media (min-width: 1334px) and (max-width: 1861px){
+            #introduction .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_2112x1584.jpg");
+            }
+        }
+        @media (min-width: 1862px) {
+            #introduction .bg-image {
+                background-image: url("/static/images/Nadia_Tumiwa_7246_2640x1980.jpg");
+            }
+        }
+        #introduction .bg-image {
+            background-position: 44% center;
+        }
+    </style>
+    <div class="container padded">
+        <div class="bg-image"></div>
+    </div>
+</section>
+<section id="performances">
+    <div class="container padded">
+        <div class="wrapper">
+            <div class="section-title">
+                <h2>Performances</h2>
+            </div>
+            <div class="events">
+                <article class="first performance">
+                    <div class="description">
+                        <h3 class="title">Gluren bij de Buren</h3>
+                        <h4 class="venue">Lodewijk Pincoffsweg 87</h4>
+                        </ol>
+                    </div>
+                    <time datetime="2024-12-15 11:00">February 2, 2025</time>
+                    <div class="ticketing">
+                        <a class="buy-tickets sold-out">TBA</a>
+                    </div>
+                </article>
+                <article class="performance">
+                    <div class="description">
+                        <h3 class="title">Muziekfestival ZOOM!</h3>
+                        <h4 class="venue">Landgoed Middachten, De Steeg</h4>
+                        <ol class="programme">
+                            <li class="piece"><span class="composer">Chausson</span>: Concert for Violin, Piano and String Quartet, Op.21</li>
+                            <li class="piece"><span class="composer">Sibelius</span>: Valse Triste</li>
+                            <li class="piece"><span class="composer">Ravel</span>: Alborada del Gracioso</li>
+                            <li class="piece"><span class="composer">Auric</span>: Adieu, New York!</li>
+                        </ol>
+                    </div>
+                    <time class="passed" datetime="2024-06-08 09:00">June 8, 2024</time>
+                    <div class="ticketing">
+                        <a class="buy-tickets sold-out" href="">Sold out</a>
+                    </div>
+                </article>
+                <article class="performance">
+                    <div class="description">
+                        <h3 class="title">Talent Break</h3>
+                        <h4 class="venue">De Doelen, Rotterdam</h4>
+                        <ol class="programme">
+                            <li class="piece"><span class="composer">Schoenberg</span>: Chamber Symphony No.1, Op.9</li>
+                        </ol>
+                    </div>
+                    <time class="passed" datetime="2024-04-03 12:30">April 3, 2024</time>
+                    <div class="ticketing">
+                        <a class="buy-tickets sold-out">Sold out</a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

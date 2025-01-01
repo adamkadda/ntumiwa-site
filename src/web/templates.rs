@@ -13,13 +13,5 @@ pub(super) struct BiographyTemplate;
 pub(super) struct PerformancesTemplate;
 
 #[derive(Template)]
-#[template(path = "photos.html")]
-pub(super) struct PhotosTemplate;
-
-#[derive(Template)]
-#[template(path = "videos.html")]
-pub(super) struct VideosTemplate;
-
-#[derive(Template)]
 #[template(path = "contact.html")]
 pub(super) struct ContactTemplate;
