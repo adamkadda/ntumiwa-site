@@ -31,7 +31,13 @@
 #bio .section-title {
     display: flex;
     justify-content: center;
-    margin-bottom: 3em;
+    margin-bottom: 2vw;
+}
+
+@media (max-width: 799px) {
+    #bio .section-title {
+        margin-top: 5.2vw;
+    }
 }
 
 /* font-size styles for section heading */

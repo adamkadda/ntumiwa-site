@@ -33,8 +33,16 @@
 }
 
 #contact .section-title span {
+    font-size: 22px;
     font-weight: 700;
     text-align: center;
+    margin-top: 0.5em;
+}
+
+@media (max-width: 799px) {
+    #contact .section-title {
+        margin-top: 5.2vw;
+    }
 }
 
 /* =================================
@@ -46,7 +54,7 @@
     justify-content: center;
 }
 
-.card {
+.card {    
     width: 525px;
     height: 300px;
 
@@ -67,13 +75,20 @@
     font-size: 20px;
     font-weight: 500;
 
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .card .phone {
     font-weight: 700;
     color: inherit;
     text-decoration: none;
+
+    color: #004e98;
+    text-decoration: underline;
+}
+
+.card p {
+    margin-bottom: 10px;
 }
 
 .card .email {
@@ -83,28 +98,54 @@
 }
 
 .card .location {
-    margin-top: 65px;
-
     text-transform: lowercase;
     font-weight: 500;
+    
+    margin-top: 65px;
+    margin-bottom: 0px;
 }
 
-@media (max-width: 549px) {
+/* mobile view */
+
+@media (max-width: 549px) {    
     .card {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
 
-        max-width: 300px;
-        max-height: 300px;
+        width: fit-content;
 
-        padding: 15px 20px;
+        padding: 0px 0px;
+        padding-top: 30px;
+        padding-bottom: 40px;
+
+        min-width: 370px;
+        min-height: 300px;
+    }
+
+    .card .name {
+        font-size: 29px;
     }
 
     .card .position {
-        margin-bottom: 70px;
+        font-size: 22px;
+        margin: 0px;
+    }
+
+    .card .phone {
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    .card .email {
+        font-size: 22px;
+        font-weight: 700;
+        color: inherit;
     }
 
     .card .location {
-        margin-top: 80px;
+        font-size: 22px;
+        margin: 0px;    
     }
 }

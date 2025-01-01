@@ -36,6 +36,12 @@
     margin-bottom: 3em;
 }
 
+@media (max-width: 799px) {
+    #performances .section-title {
+        margin-top: 5.2vw;
+    }
+}
+
 /* =================================
             Performance
 ================================= */
