@@ -1,67 +1,70 @@
-#brief-biography .bg-image {
+/* =================================
+            Biography
+================================= */
+
+#bio {
+    background-color: var(--main-light);
     margin-top: -10.4vw;
-    background-position: right top;
-    clip-path: polygon(0 0, 100% 10.4vw, 100% 100%, 0 100%);
-
-    z-index: 10;
 }
 
-#brief-biography .wrapper {
-    z-index: 20;
+#bio .container {
+    justify-content: center;
 }
 
-#brief-biography .padded {
-    padding-top: 0;
-    padding-bottom: 80px;
+#bio .padded {
+    padding-top: 10.4vw;
+    padding-bottom: 5.2vw;
 }
 
-@media (max-width: 1259) {
-    #brief-biography .wrapper {
-        width: 45%;
-    }
+#bio .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-@media (min-width: 1260px) {
-    #brief-biography .wrapper {
-        color: white;
-        width: 40%;
-    }
+/* =================================
+            Section Title
+================================= */
 
-    #brief-biography a {
-        color: white;
-        border-color: white;
-    }
+/* positional styles for section heading */
 
-    #brief-biography .padded {
-        padding-top: 60px;
-        padding-bottom: 120px;
-    }
+#bio .section-title {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3em;
 }
 
-#brief-biography h2 {
+/* font-size styles for section heading */
+
+#bio h2 {
     font-size: 40px;
     font-weight: 700;
-    margin: 0px;
-
-    margin-bottom: 1em;
+    width: fit-content;
 }
 
 @media (min-width: 600px) {
-    #brief-biography h2 {
+    #bio h2 {
         font-size: calc(40px + 20*((100vw - 600px) / 500));
     }
 }
 
 @media (min-width: 1100px) {
-    #brief-biography h2 {
+    #bio h2 {
         font-size: 60px;
     }
 }
 
-.short-text {
+/* =================================
+            Biography Text
+================================= */
+
+#bio article {
     line-height: 1.6;
     font-weight: 400;
 
-    margin-top: 2em;
-    margin-bottom: 3.5em;
+    max-width: 740px;
+}
+
+#bio p {
+    margin: 30px 0px;
 }

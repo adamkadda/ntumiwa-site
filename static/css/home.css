@@ -1,42 +1,4 @@
 /* =================================
-            Introduction
-================================= */
-
-/* <div> properties */
-
-#introduction .container {
-    height: 100vmin;
-}
-
-@media (orientation: portrait) {
-    #introduction .container {
-        height: 130vmin;
-        max-height: 100vh;
-    }
-}
-
-#introduction .padded {
-    padding-bottom: 7.2vw;
-}
-
-#introduction .wrapper {
-    position: relative;
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    text-align: center;
-    
-    z-index: 30;
-}
-
-/* background image */
-
-#introduction .bg-image {
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 10.4vw));
-}
-
-/* =================================
            Brief Biography
 ================================= */
 

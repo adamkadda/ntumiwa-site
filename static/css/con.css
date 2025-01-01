@@ -2,8 +2,6 @@
               Contact
 ================================= */
 
-/* <div> properties */
-
 #contact {
     background-color: #e9eaec;
     margin-top: -10.4vw;
@@ -14,42 +12,19 @@
 }
 
 #contact .padded {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 10.4vw;
+    padding-bottom: 5.2vw;
 }
 
-#contact .wrapper {
-    margin-top: 10px; /* see #upcoming-performances .wrapper */;
-}
-
-/* section title */
+/* =================================
+            Section Title
+================================= */
 
 #contact .section-title {
     display: flex;
-    justify-content: center;
-}
-
-@media (min-width: 800px) {
-    #contact .section-title {
-        margin-top: 60px ;
-    }
-}
-
-@media (min-width: 1000px) {
-    #contact .section-title {
-        margin-top: 80px ;
-    }
-}
-
-@media (min-width: 1250px) {
-    #contact .section-title {
-        margin-top: 120px ;
-    }
-}
-
-#contact .section-title {
-    margin-bottom: 60px;
     flex-direction: column;
+    justify-content: center;
+    margin-bottom: 3em;
 }
 
 #contact .section-title h2 {
@@ -62,13 +37,13 @@
     text-align: center;
 }
 
-/* business card */
+/* =================================
+            Contact Card
+================================= */
 
 .card-container {
     display: flex;
     justify-content: center;
-
-    margin-bottom: 30px;
 }
 
 .card {
