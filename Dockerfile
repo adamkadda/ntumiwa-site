@@ -57,4 +57,4 @@ USER appuser
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/${APP_NAME} /usr/local/bin/${APP_NAME}
 
 EXPOSE 8080
-CMD ["/usr/local/bin/ntumiwa-site"]
+ENTRYPOINT [ "/usr/local/bin/ntumiwa-site" ]

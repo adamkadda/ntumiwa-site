@@ -31,7 +31,6 @@
 LICENSE
 README.md
 
-# static assets excluding css and js
+# static files
 
-/static/icons/
-/static/images/
+/static
