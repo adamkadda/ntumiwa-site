@@ -63,15 +63,11 @@
 }
 
 .card .name {
-    text-transform: lowercase;
-
     font-size: 35px;
     letter-spacing: 0.05rem;
 }
 
 .card .position {
-    text-transform: lowercase;
-
     font-size: 20px;
     font-weight: 500;
 
@@ -98,7 +94,6 @@
 }
 
 .card .location {
-    text-transform: lowercase;
     font-weight: 500;
     
     margin-top: 65px;
