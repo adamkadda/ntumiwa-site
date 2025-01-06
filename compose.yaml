@@ -13,7 +13,6 @@ services:
   reverse-proxy:
     image: traefik:v3.2
     command:
-      - "--api.insecure=true"
       - "--providers.docker"
       - "--providers.docker.exposedbydefault=false" # prevents docker contains from being exposed by default
       - "--entryPoints.websecure.address=:443" # identify an entrypoint for HTTPS
@@ -26,7 +25,6 @@ services:
     ports:
       - "80:80"
       - "443:443"
-      - "8080:8080"
     volumes:
       - "letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
