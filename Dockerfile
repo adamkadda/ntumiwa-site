@@ -56,5 +56,8 @@ USER appuser
 # Copy over the binary
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/${APP_NAME} /usr/local/bin/${APP_NAME}
 
+# Copy over the static directory
+COPY ./static ./static
+
 EXPOSE 8080
 ENTRYPOINT [ "/usr/local/bin/ntumiwa-site" ]
