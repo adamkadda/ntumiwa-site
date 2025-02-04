@@ -36,6 +36,8 @@ services:
       - "traefik.http.routers.server.rule=Host(`nadiatumiwa.com`, `www.nadiatumiwa.com`)"
       - "traefik.http.routers.server.entrypoints=websecure" # requests must come through 443
       - "traefik.http.routers.server.tls.certresolver=myresolver" # use myresolver
+      - "traefik.http.routers.server.tls.domains[0].main=nadiatumiwa.com"
+      - "traefik.http.routers.server.tls.domains[0].sans=www.nadiatumiwa.com" # SAN (Subject Alternative Name)
       - "traefik.http.middlewares.test-http-cache.plugin.httpCache.maxTtl=216000" # 1 hour cache
       - "com.centurylinklabs.watchtower.enable=true"
     deploy:
