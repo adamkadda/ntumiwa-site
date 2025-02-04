@@ -33,7 +33,7 @@ services:
     image: adamkadda/ntumiwa-site:prod
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.server.rule=Host(`nadiatumiwa.com`, `www.nadiatumiwa.com`)"
+      - "traefik.http.routers.server.rule=Host(`nadiatumiwa.com`)"
       - "traefik.http.routers.server.entrypoints=websecure" # requests must come through 443
       - "traefik.http.routers.server.tls.certresolver=myresolver" # use myresolver
       - "traefik.http.routers.server.tls.domains[0].main=nadiatumiwa.com"
