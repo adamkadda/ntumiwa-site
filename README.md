@@ -4,12 +4,14 @@ This is a full-stack web application built primarily with Go's net/http module. 
 
 ![Home Preview](assets/home-preview.png)
 
+
 ## Contents
 
 1. [High-Level Architecture](#high-level-architecture)
 2. [Technical Requirements](#technical-requirements)
 3. [Non-Technical Requirements](#non-technical-requirements)
 4. [Checklist](#checklist)
+
 
 ## High-Level Architecture
 
@@ -19,50 +21,50 @@ This is a full-stack web application built primarily with Go's net/http module. 
 - It also allows me to easily share custom types, configs, and apply build scripts across to the whole repository.
 - Versioning and (hopefully) collaboration will be easier this way.
 
-## ⚙️ Technical Requirements
+
+
+## Technical Requirements
 
 **Public Site** (`nadiatumiwa.com`)
-- [ ] Pages: `/`, `/biography`, `/performances`, `/media`, `/contact`, `/mail`, `400`, `500`
-- [ ] Responsive header with bio snippet
-- [ ] Upcoming/past performances list
-- [ ] Media gallery (videos, images, press kit download)
-- [ ] Mailing list form with spam protection (honeypot)
-- [ ] Cookie consent popup
-- [ ] `robots.txt` setup
+- Pages: `/`, `/biography`, `/performances`, `/media`, `/contact`, `/mail`, `400`, `500`
+- Responsive header with bio snippet
+- Upcoming/past performances list
+- Media gallery (videos, images, press kit download)
+- Mailing list form with spam protection (honeypot)
+- Cookie consent popup
+- `robots.txt` setup
 
 **Admin Dashboard** (`admin.nadiatumiwa.com`)
-- [ ] Auth: login page (`/login`) with honeypot, forgot password flow (`/forgot`)
-- [ ] Pages: `/`, `/users`, `/events`, `/content`, `/contact`, `/mail`
-- [ ] Manage events, bio content, contact info, and mailing list
+- Auth: login page (`/login`) with honeypot, forgot password flow (`/forgot`)
+- Pages: `/`, `/users`, `/events`, `/content`, `/contact`, `/mail`
+- Manage events, bio content, contact info, and mailing list
 
 **Backend API**
-- [ ] Public endpoints: fetch events, bio (short/full), media, contact details
-- [ ] Admin endpoints: full CRUD for events, content, contact
-- [ ] Route protection, input validation, structured data responses
-- [ ] PostgreSQL database integration, schema definition and versioned migrations
-
----
-
-## 📄 Non-Technical Requirements
-
-- [ ] Content: short/full bio, events, photos/videos, contact info
-- [ ] Design: clean, mobile-first UI aligned with personal brand
-- [ ] Mailing list: opt-in copy, GDPR-safe, anti-spam measures
+- Public endpoints: fetch events, bio (short/full), media, contact details
+- Admin endpoints: full CRUD for events, content, contact
+- Route protection, input validation, structured data responses
+- PostgreSQL database integration, schema definition and versioned migrations
 
 
-## ✅ Checklist
+## Non-Technical Requirements
 
-### Project Structure
+- Content: short/full bio, events, photos/videos, contact info
+- Design: clean, mobile-first UI aligned with personal brand
+- Mailing list: opt-in copy, GDPR-safe, anti-spam measures
+
+## Checklist
+
+**Project Structure**
 - [x] Plan the rewrite!
-- [ ] Public frontend
+- [ ] Public frontend (ONGOING)
 - [ ] Admin dashboard
 - [ ] Backend API
 
-### Database
+**Database**
 - [ ] PostgreSQL configured (connection + credentials)
 - [ ] Schema defined with versioned migrations
 
-### CI/CD & DevOps
+**CI/CD & DevOps**
 - [ ] Plan CI/CD pipeline (likely Jenkins)
 - [ ] Automated linting and testing pipeline
 - [ ] Build and deployment steps for API and frontend apps
