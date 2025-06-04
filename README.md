@@ -4,24 +4,18 @@ This is a full-stack web application built primarily with Go's net/http module. 
 
 ![Home Preview](assets/home-preview.png)
 
-
 ## Contents
 
-1. [High-Level Architecture](#high-level-architecture)
-2. [Technical Requirements](#technical-requirements)
-3. [Non-Technical Requirements](#non-technical-requirements)
-4. [Checklist](#checklist)
-
+- [High-Level Architecture](#high-level-architecture)
+- [Technical Requirements](#technical-requirements)
+- [Non-Technical Requirements](#non-technical-requirements)
+- [Checklist](#checklist)
 
 ## High-Level Architecture
 
 ![Diagram](assets/diagram.svg)
 
-- This project uses a Monorepo design. A unified codebase makes it easier for me to manage dependencies and refactor more easily.
-- It also allows me to easily share custom types, configs, and apply build scripts across to the whole repository.
-- Versioning and (hopefully) collaboration will be easier this way.
-
-
+This project uses a Monorepo design. A unified codebase makes it easier for me to manage dependencies and refactor more easily. It also allows me to easily share custom types, configs, and apply build scripts across to the whole repository. Versioning and (hopefully) collaboration will be easier this way.
 
 ## Technical Requirements
 
@@ -45,7 +39,6 @@ This is a full-stack web application built primarily with Go's net/http module. 
 - Route protection, input validation, structured data responses
 - PostgreSQL database integration, schema definition and versioned migrations
 
-
 ## Non-Technical Requirements
 
 - Content: short/full bio, events, photos/videos, contact info
@@ -54,9 +47,9 @@ This is a full-stack web application built primarily with Go's net/http module. 
 
 ## Checklist
 
-**Project Structure**
+**Services**
 - [x] Plan the rewrite!
-- [ ] Public frontend (ONGOING)
+- [ ] Public frontend
 - [ ] Admin dashboard
 - [ ] Backend API
 
