@@ -21,6 +21,12 @@ type Cache[T any] struct {
 	// lastAccess time.Time
 }
 
+func New[T any](ttl time.Duration) *Cache[T] {
+	return &Cache[T]{
+		ttl: ttl,
+	}
+}
+
 func (c *Cache[T]) Get() *T {
 	c.mu.RLock()
 	defer c.mu.RUnlock()

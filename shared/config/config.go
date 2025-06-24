@@ -3,7 +3,6 @@ package config
 import (
 	"database/sql"
 	"fmt"
-	"net/http"
 	"os"
 	"time"
 
@@ -18,14 +17,14 @@ import (
 */
 
 type Config struct {
-	Logs       LogConfig
+	API        APIClientConfig
 	DB         PostgresConfig
-	HTTPClient HTTPClientConfig
 	Host       string
 	Port       string
 	ServerType string
 }
 
+// currently unused, not currently crucial
 type LogConfig struct {
 	Style string
 	Level string
@@ -39,22 +38,13 @@ type PostgresConfig struct {
 	DBName   string
 }
 
-type HTTPClientConfig struct {
+type APIClientConfig struct {
+	BaseURL string
+	Timeout time.Duration
+
 	MaxIdleConns        int
 	MaxIdleConnsPerHost int
-	IdleConnTimeoutSec  int
-	RequestTimeoutSec   int
-}
-
-func (c *HTTPClientConfig) NewHTTPClient() *http.Client {
-	return &http.Client{
-		Transport: &http.Transport{
-			MaxIdleConns:        c.MaxIdleConns,
-			MaxIdleConnsPerHost: c.MaxIdleConnsPerHost,
-			IdleConnTimeout:     time.Duration(c.IdleConnTimeoutSec) * time.Second,
-		},
-		Timeout: time.Duration(c.RequestTimeoutSec) * time.Second,
-	}
+	IdleConnTimeout     time.Duration
 }
 
 func (pg *PostgresConfig) Connect() (*sql.DB, error) {
@@ -87,19 +77,13 @@ func (pg *PostgresConfig) Connect() (*sql.DB, error) {
 	This method returns an error for future-proofing.
 	In the event that some part of the startup fails e.g. missing DB
 	credentials, or log specs, we can return an appropriate error.
-
-	Furthermore, this method should be called by the App constructor.
 */
 
 func LoadConfig() (*Config, error) {
-	cfg := &Config{
+	config := &Config{
 		Host:       os.Getenv("HOST"),
 		Port:       os.Getenv("PORT"),
-		ServerType: os.Getenv("TYPE"),
-		Logs: LogConfig{
-			Style: os.Getenv("LOG_STYLE"),
-			Level: os.Getenv("LOG_LEVEL"),
-		},
+		ServerType: os.Getenv("SERVER_TYPE"),
 		DB: PostgresConfig{
 			DBName:   os.Getenv("POSTGRES_DB"),
 			Username: os.Getenv("POSTGRES_USER"),
@@ -107,7 +91,22 @@ func LoadConfig() (*Config, error) {
 			Host:     os.Getenv("POSTGRES_HOST"),
 			Port:     os.Getenv("POSTGRES_PORT"),
 		},
+		API: APIClientConfig{
+			BaseURL:             os.Getenv("API_BASE_URL"),
+			Timeout:             getEnvDuration("API_TIMEOUT", 500*time.Millisecond),
+			IdleConnTimeout:     getEnvDuration("API_IDLE_CONN_TIMEOUT", 60*time.Second),
+			MaxIdleConns:        getEnvInt("API_MAX_IDLE_CONNS", 100),
+			MaxIdleConnsPerHost: getEnvInt("API_MAX_IDLE_CONNS_PER_HOST", 100),
+		},
 	}
 
-	return cfg, nil
+	if config.ServerType == "" {
+		return nil, fmt.Errorf("[CONFIG] SERVER_TYPE not set")
+	}
+
+	if config.ServerType != "API" && config.API.BaseURL == "" {
+		return nil, fmt.Errorf("[API_CONFIG] API_BASE_URL not set")
+	}
+
+	return config, nil
 }

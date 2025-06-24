@@ -1,71 +1,162 @@
 package pagedata
 
 import (
-	"encoding/json"
-	"io"
-	"net/http"
+	"time"
 
+	"github.com/adamkadda/ntumiwa-site/shared/api"
 	"github.com/adamkadda/ntumiwa-site/shared/cache"
 )
 
-/*
-	I've decided to avoid using an interface for the Pages
-	field as it introduced a lot of unncessary complexity.
-
-	Instead, I'm leaving it as a wrapper that allows it to
-	still serve its core functions:
-
-	1. Access the caches' values
-	2. Update the caches
-	3. Check the caches' health
-*/
-
-type PageData interface {
-	GetHomeData() (*HomeData, error)
+type Pages interface {
+	GetHomePageData() (*HomeData, error)
+	GetBioPageData() (*BioData, error)
+	GetPerfsPageData() (*PerfsData, error)
+	GetMediaPageData() (*MediaData, error)
+	GetContactPageData() (*ContactData, error)
 }
 
-type PageCache struct {
-	apiURL string
-	client *http.Client
-	home   *cache.Cache[HomeData]
+type PageData struct {
+	apiClient *api.APIClient
+	home      *cache.Cache[HomeData]
+	bio       *cache.Cache[BioData]
+	perfs     *cache.Cache[PerfsData]
+	media     *cache.Cache[MediaData]
+	contact   *cache.Cache[ContactData]
 }
 
-func NewPageCache(apiURL string, client *http.Client) (*PageCache, error) {
-	pc := &PageCache{
-		apiURL: apiURL,
-		client: client,
-		home:   &cache.Cache[HomeData]{},
+func New(apiClient *api.APIClient) (*PageData, error) {
+	pageData := &PageData{
+		apiClient: apiClient,
+		home:      cache.New[HomeData](1 * time.Hour),
+		bio:       cache.New[BioData](1 * time.Hour),
+		perfs:     cache.New[PerfsData](1 * time.Hour),
+		media:     cache.New[MediaData](1 * time.Hour),
+		contact:   cache.New[ContactData](1 * time.Hour),
 	}
 
-	homeData, err := pc.GetHomeData()
+	homeData, err := pageData.GetHomePageData()
 	if err != nil {
 		return nil, err
 	}
-	pc.home.Set(homeData)
+	pageData.home.Set(homeData)
 
-	return pc, nil
+	bioData, err := pageData.GetBioPageData()
+	if err != nil {
+		return nil, err
+	}
+	pageData.bio.Set(bioData)
+
+	perfsData, err := pageData.GetPerfsPageData()
+	if err != nil {
+		return nil, err
+	}
+	pageData.perfs.Set(perfsData)
+
+	mediaData, err := pageData.GetMediaPageData()
+	if err != nil {
+		return nil, err
+	}
+	pageData.media.Set(mediaData)
+
+	contactData, err := pageData.GetContactPageData()
+	if err != nil {
+		return nil, err
+	}
+	pageData.contact.Set(contactData)
+
+	return pageData, nil
 }
 
-func (pc *PageCache) GetHomeData() (*HomeData, error) {
-	resp, err := pc.client.Get(pc.apiURL)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
+func (pageData *PageData) GetHomePageData() (*HomeData, error) {
+	data := pageData.home.Get()
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
-		return nil, err
-	}
+	if data == nil {
+		briefBio, err := pageData.apiClient.FetchBriefBio()
+		if err != nil {
+			return nil, err
+		}
 
-	data := &HomeData{}
-	err = json.Unmarshal(body, data)
+		upcomingPerformances, err := pageData.apiClient.FetchUpcomingPerformances()
+		if err != nil {
+			return nil, err
+		}
+
+		data = &HomeData{
+			BriefBio:             briefBio,
+			UpcomingPerformances: upcomingPerformances,
+		}
+	}
 
 	return data, nil
 }
 
+func (pageData *PageData) GetBioPageData() (*BioData, error) {
+	data := pageData.bio.Get()
+	if data == nil {
+		biography, err := pageData.apiClient.FetchFullBio()
+		if err != nil {
+			return nil, err
+		}
+		data = &BioData{
+			Biography: biography,
+		}
+	}
+	return data, nil
+}
+
+func (pageData *PageData) GetPerfsPageData() (*PerfsData, error) {
+	data := pageData.perfs.Get()
+	if data == nil {
+		upcoming, err := pageData.apiClient.FetchUpcomingPerformances()
+		if err != nil {
+			return nil, err
+		}
+		past, err := pageData.apiClient.FetchPastPerformances()
+		if err != nil {
+			return nil, err
+		}
+		data = &PerfsData{
+			UpcomingPerformances: upcoming,
+			PastPerformances:     past,
+		}
+	}
+	return data, nil
+}
+
+func (pageData *PageData) GetMediaPageData() (*MediaData, error) {
+	data := pageData.media.Get()
+	if data == nil {
+		videos, err := pageData.apiClient.FetchVideos()
+		if err != nil {
+			return nil, err
+		}
+		data = &MediaData{
+			Videos: videos,
+		}
+	}
+	return data, nil
+}
+
+func (pageData *PageData) GetContactPageData() (*ContactData, error) {
+	data := pageData.contact.Get()
+	if data == nil {
+		contact, err := pageData.apiClient.FetchContactDetails()
+		if err != nil {
+			return nil, err
+		}
+		data = &ContactData{
+			Position: contact.Position,
+			Location: contact.Location,
+			TelNum:   contact.TelNum,
+			TelText:  contact.TelText,
+			Email:    contact.Email,
+		}
+	}
+	return data, nil
+}
+
 // low priority feature
-func (p *PageCache) checkHealth() error {
+func (pageData *PageData) checkHealth() error {
 
 	/*
 		Call Get() on each field/cache, check for nil.

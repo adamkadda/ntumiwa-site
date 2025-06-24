@@ -79,24 +79,24 @@ Nadia Tumiwa
 			<div class="section-title">
 				<h2>Performances</h2>
 			</div>
-			<div class="events">
-				{{ if .UpcomingEvents }}
-				{{ range $index, $event := .UpcomingEvents }}
+			<div class="performances">
+				{{ if .UpcomingPerformances }}
+				{{ range $index, $performance := .UpcomingPerformances }}
 				<article class="{{ if eq $index 0}}first {{ end }}performance">
 					<div class="description">
-						<h3 class="title">{{ $event.Title }}</h3>
-						<h4 class="venue">{{ $event.Venue }}</h4>
+						<h3 class="title">{{ $performance.Title }}</h3>
+						<h4 class="venue">{{ $performance.Venue }}</h4>
 						<ol class="programme">
-							{{ range $pieceIndex, $piece := $event.Programme }}
+							{{ range $pieceIndex, $piece := $performance.Programme }}
 							<li class="piece">
 								<span class="composer">{{ $piece.Composer }}</span>: {{ $piece.Title }}
 							</li>
 							{{ end }}
 						</ol>
 					</div>
-					<time datetime="{{ $event.ExactDate }}">{{ $event.Date }}</time>
+					<time datetime="{{ $performance.ExactDate }}">{{ $performance.Date }}</time>
 					<div class="ticketing">
-						<a class="buy-tickets" href="{{ $event.TicketLink }}" target="_blank">tickets</a>
+						<a class="buy-tickets" href="{{ $performance.TicketLink }}" target="_blank">tickets</a>
 					</div>
 				</article>
 				{{ end }}

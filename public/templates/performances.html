@@ -1,0 +1,80 @@
+{{ define "styles"}}
+<link rel="stylesheet" href="/static/css/performances.css">
+{{ end }}
+
+{{ define "pageTitle" }}
+Performances - Nadia Tumiwa
+{{ end }}
+
+{{ define "content" }}
+<section id="upcoming-performances">
+	<div class="container padded">
+		<div class="wrapper">
+			<div class="section-title">
+				<h2>Upcoming Performances</h2>
+			</div>
+			<div class="performances">
+				{{ if .UpcomingPerformances }}
+				{{ range $index, $performance := .UpcomingPerformances }}
+				<article class="{{ if eq $index 0}}first {{ end }}performance">
+					<div class="description">
+						<h3 class="title">{{ $performance.Title }}</h3>
+						<h4 class="venue">{{ $performance.Venue }}</h4>
+						<ol class="programme">
+							{{ range $pieceIndex, $piece := $performance.Programme }}
+							<li class="piece">
+								<span class="composer">{{ $piece.Composer }}</span>: {{ $piece.Title }}
+							</li>
+							{{ end }}
+						</ol>
+					</div>
+					<time datetime="{{ $performance.ExactDate }}">{{ $performance.Date }}</time>
+					<div class="ticketing">
+						<a class="buy-tickets" href="{{ $performance.TicketLink }}" target="_blank">tickets</a>
+					</div>
+				</article>
+				{{ end }}
+				{{ else }}
+				<h3 class="stay-posted">The next chapter is being prepared with care. Stay close for updates.</h3>
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="performances">
+	<div class="container padded">
+		<div class="wrapper">
+			<div class="section-title">
+				<h2>Past Performances</h2>
+			</div>
+			<div class="performances">
+				{{ range $index, $performance := .PastPerformances }}
+				<article class="{{ if eq $index 0 }}first {{ end }}performance">
+					<div class="description">
+						<h3 class="title">{{ $performance.Title }}</h3>
+						<h4 class="venue">{{ $performance.Venue }}</h4>
+						<ol class="programme">
+							{{ range $pieceIndex, $piece := $performance.Programme }}
+							<li class="piece">
+								<span class="composer">{{ $piece.Composer }}</span>: {{ $piece.Title }}
+							</li>
+							{{ end }}
+						</ol>
+					</div>
+					<time datetime="{{ $performance.ExactDate }}">{{ $performance.Date }}</time>
+					<div class="ticketing">
+						<a class="tickets past" href="{{ $performance.TicketLink }}" target="_blank">Past</a>
+					</div>
+				</article>
+				{{ end }}
+			</div>
+		</div>
+	</div>
+</section>
+
+{{ end }}
+
+{{ define "perfs" }}
+{{ template "base" }}
+{{ end }}
