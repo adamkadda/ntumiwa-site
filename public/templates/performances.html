@@ -1,4 +1,4 @@
-{{ define "styles"}}
+{{ define "styles" }}
 <link rel="stylesheet" href="/static/css/performances.css">
 {{ end }}
 
@@ -42,7 +42,7 @@ Performances - Nadia Tumiwa
 	</div>
 </section>
 
-<section id="performances">
+<section id="past-performances">
 	<div class="container padded">
 		<div class="wrapper">
 			<div class="section-title">
@@ -72,9 +72,8 @@ Performances - Nadia Tumiwa
 		</div>
 	</div>
 </section>
-
 {{ end }}
 
 {{ define "perfs" }}
-{{ template "base" }}
+{{ template "base" . }}
 {{ end }}
