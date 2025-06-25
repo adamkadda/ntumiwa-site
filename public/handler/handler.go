@@ -127,7 +127,7 @@ func InternalServerError(logger *log.Logger, templates *template.Template) http.
 
 		w.WriteHeader(http.StatusInternalServerError)
 
-		if err := templates.ExecuteTemplate(w, "500", nil); err != nil {
+		if err := templates.ExecuteTemplate(w, "5XX", nil); err != nil {
 			logger.Printf("ERROR: Failed to execute 500 template: %v", err)
 			w.Write([]byte("500 - Internal Server Error"))
 		}
