@@ -27,3 +27,6 @@
 *.log
 tmp/
 temp/
+
+# Live preview (dev)
+preview/
