@@ -1,7 +1,8 @@
-package public
+package main
 
 import (
 	"embed"
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -12,18 +13,26 @@ import (
 	"github.com/adamkadda/ntumiwa-site/shared/api"
 	"github.com/adamkadda/ntumiwa-site/shared/config"
 	"github.com/adamkadda/ntumiwa-site/shared/middleware"
+	"github.com/joho/godotenv"
 )
 
 //go:embed templates
 var tmplDir embed.FS
 
 func main() {
+	err := godotenv.Load()
+	if err != nil {
+		log.Printf("Warning: could not load .env file: %v", err)
+	} else {
+		fmt.Println(".env file loaded successfully")
+	}
+
 	config, err := config.LoadConfig()
 	if err != nil {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	templates := template.Must(template.ParseFS(tmplDir, "templates/**/*.html"))
+	templates := template.Must(template.ParseFS(tmplDir, "templates/*.html"))
 
 	apiClient := api.NewAPIClient(config)
 
@@ -34,7 +43,10 @@ func main() {
 
 	logger := log.New(os.Stdout, "["+config.ServerType+"]", log.LstdFlags)
 
+	fs := http.FileServer(http.Dir("./static/"))
+
 	mux := http.NewServeMux()
+	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 	mux.Handle("/{$}", handler.Home(logger, templates, pageData))
 	mux.Handle("/biography", handler.Biography(logger, templates, pageData))
 	mux.Handle("/performances", handler.Performances(logger, templates, pageData))
