@@ -261,3 +261,15 @@
 #upcoming-performances .box-link {
 	margin-top: 4em;
 }
+
+.stay-posted {
+	font-weight: bold;
+	font-size: 20px;
+	text-align: center;
+}
+
+@media (max-width: 799px) {
+	.stay-posted {
+		font-size: 16px;
+	}
+}

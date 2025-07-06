@@ -47,15 +47,12 @@ Contact - Nadia Tumiwa
 		<div class="wrapper">
 			<div class="section-title">
 				<h2>Contact</h2>
-				<span>I'd love to hear from you!</span>
 			</div>
-			<div class="container">
+			<div class="details-container">
 				<article class="contact-details">
-					<p class="name">Nadia Tumiwa</p>
-					<p class="position">{{ .Position }}</p>
-					<p class="location">{{ .Location }}</p>
-					<p><a class="phone" href="tel:{{ .TelNum }}">{{ .TelText }}</a></p>
-					<p><a class="email" href="mailto:nadiatumiwa@gmail.com">{{ .Email }}</a></p>
+					<p class="location">based in {{ .Location }}</p>
+					<p>phone: <a class="phone" href="tel:{{ .TelNum }}">{{ .TelText }}</a></p>
+					<p>email: <a class="email" href="mailto:nadiatumiwa@gmail.com">{{ .Email }}</a></p>
 				</article>
 			</div>
 		</div>

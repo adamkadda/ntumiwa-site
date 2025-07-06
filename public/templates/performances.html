@@ -7,6 +7,41 @@ Performances - Nadia Tumiwa
 {{ end }}
 
 {{ define "content" }}
+<section id="introduction">
+	<style>
+		@media (max-width: 1069px) {
+			#introduction .bg-image {
+				background-image: url("/static/images/Nadia_Tumiwa_7246_1320x990.jpg");
+			}
+		}
+
+		@media (min-width: 1070px) and (max-width: 1333px) {
+			#introduction .bg-image {
+				background-image: url("/static/images/Nadia_Tumiwa_7246_1584x1188.jpg");
+			}
+		}
+
+		@media (min-width: 1334px) and (max-width: 1861px) {
+			#introduction .bg-image {
+				background-image: url("/static/images/Nadia_Tumiwa_7246_2112x1584.jpg");
+			}
+		}
+
+		@media (min-width: 1862px) {
+			#introduction .bg-image {
+				background-image: url("/static/images/Nadia_Tumiwa_7246_2640x1980.jpg");
+			}
+		}
+
+		#introduction .bg-image {
+			background-position: 44% center;
+		}
+	</style>
+	<div class="container padded">
+		<div class="bg-image"></div>
+	</div>
+</section>
+
 <section id="upcoming-performances">
 	<div class="container padded">
 		<div class="wrapper">
@@ -35,7 +70,8 @@ Performances - Nadia Tumiwa
 				</article>
 				{{ end }}
 				{{ else }}
-				<h3 class="stay-posted">The next chapter is being prepared with care. Stay close for updates.</h3>
+				<p class="stay-posted">The next chapter is being prepared with care.</p>
+				<p class="stay-posted">Stay close for updates.</p>
 				{{ end }}
 			</div>
 		</div>
@@ -64,7 +100,7 @@ Performances - Nadia Tumiwa
 					</div>
 					<time datetime="{{ $performance.ExactDate }}">{{ $performance.Date }}</time>
 					<div class="ticketing">
-						<a class="tickets past" href="{{ $performance.TicketLink }}" target="_blank">Past</a>
+						<a class="buy-tickets past">Past</a>
 					</div>
 				</article>
 				{{ end }}

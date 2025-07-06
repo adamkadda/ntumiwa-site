@@ -19,6 +19,7 @@ html {
 :root {
 	--main-dark: #07080d;
 	--main-light: #F2F4F3;
+	--grey: #E9ECEB;
 }
 
 .frozen {
@@ -94,7 +95,6 @@ main {
 }
 
 .section-title h2 {
-	width: fit-content;
 	font-weight: 700;
 }
 
