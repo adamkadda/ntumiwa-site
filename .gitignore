@@ -30,3 +30,6 @@ temp/
 
 # Live preview (dev)
 preview/
+
+# Test API
+testAPI/
