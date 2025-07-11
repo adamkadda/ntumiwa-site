@@ -41,15 +41,17 @@ This project uses a Monorepo design. A unified codebase makes it easier for me t
 
 ## Non-Technical Requirements
 
+(?) : low priority
+
 - Content: short/full bio, events, photos/videos, contact info
 - Design: clean, mobile-first UI aligned with personal brand
-- Mailing list: opt-in copy, GDPR-safe, anti-spam measures
+- (?) Mailing list: opt-in copy, GDPR-safe, anti-spam measures
 
 ## Checklist
 
 **Services**
 - [x] Plan the rewrite!
-- [ ] Public frontend
+- [x] Public frontend
 - [ ] Admin dashboard
 - [ ] Backend API
 
