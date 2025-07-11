@@ -19,7 +19,7 @@ func Home(logger *log.Logger, templates *template.Template, pageData pagedata.Pa
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
-		err = templates.ExecuteTemplate(w, "home", data)
+		err = templates.ExecuteTemplate(w, "base", data)
 		if err != nil {
 			logger.Printf("ERROR: Failed to render home.html: %v", err)
 			InternalServerError(logger, templates).ServeHTTP(w, r)
@@ -38,7 +38,7 @@ func Biography(logger *log.Logger, templates *template.Template, pageData pageda
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
-		err = templates.ExecuteTemplate(w, "bio", data)
+		err = templates.ExecuteTemplate(w, "base", data)
 		if err != nil {
 			logger.Printf("ERROR: Failed to render biography.html: %v", err)
 			InternalServerError(logger, templates).ServeHTTP(w, r)
@@ -58,7 +58,7 @@ func Performances(logger *log.Logger, templates *template.Template, pageData pag
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
-		err = templates.ExecuteTemplate(w, "perfs", data)
+		err = templates.ExecuteTemplate(w, "base", data)
 		if err != nil {
 			logger.Printf("ERROR: Failed to render performances.html: %v", err)
 			InternalServerError(logger, templates).ServeHTTP(w, r)
@@ -78,7 +78,7 @@ func Media(logger *log.Logger, templates *template.Template, pageData pagedata.P
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
-		err = templates.ExecuteTemplate(w, "media", data)
+		err = templates.ExecuteTemplate(w, "base", data)
 		if err != nil {
 			logger.Printf("ERROR: Failed to render media.html: %v", err)
 			InternalServerError(logger, templates).ServeHTTP(w, r)
@@ -98,7 +98,7 @@ func Contact(logger *log.Logger, templates *template.Template, pageData pagedata
 
 		w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
-		err = templates.ExecuteTemplate(w, "contact", data)
+		err = templates.ExecuteTemplate(w, "base", data)
 		if err != nil {
 			logger.Printf("ERROR: Failed to render contact.html: %v", err)
 			InternalServerError(logger, templates).ServeHTTP(w, r)
@@ -114,7 +114,7 @@ func NotFound(logger *log.Logger, templates *template.Template) http.Handler {
 
 		w.WriteHeader(http.StatusNotFound)
 
-		if err := templates.ExecuteTemplate(w, "404", nil); err != nil {
+		if err := templates.ExecuteTemplate(w, "base", nil); err != nil {
 			logger.Printf("ERROR: Failed to execute notFound template: %v", err)
 			w.Write([]byte("404 - Not Found"))
 		}
@@ -127,7 +127,7 @@ func InternalServerError(logger *log.Logger, templates *template.Template) http.
 
 		w.WriteHeader(http.StatusInternalServerError)
 
-		if err := templates.ExecuteTemplate(w, "5XX", nil); err != nil {
+		if err := templates.ExecuteTemplate(w, "base", nil); err != nil {
 			logger.Printf("ERROR: Failed to execute 500 template: %v", err)
 			w.Write([]byte("500 - Internal Server Error"))
 		}

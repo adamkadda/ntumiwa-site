@@ -16,8 +16,22 @@ import (
 	"github.com/joho/godotenv"
 )
 
-//go:embed templates
+//go:embed templates/*.html
 var tmplDir embed.FS
+
+var templates map[string]*template.Template
+
+func loadTemplates() {
+	base := template.Must(template.ParseFS(tmplDir, "templates/base.html"))
+	pages := []string{"home", "biography", "performances", "media", "contact", "404", "5xx"}
+
+	templates = make(map[string]*template.Template)
+	for _, page := range pages {
+		tpl := template.Must(base.Clone())
+		template.Must(tpl.ParseFiles(fmt.Sprintf("templates/%s.html", page)))
+		templates[page] = tpl
+	}
+}
 
 func main() {
 	err := godotenv.Load()
@@ -32,7 +46,7 @@ func main() {
 		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	templates := template.Must(template.ParseFS(tmplDir, "templates/*.html"))
+	loadTemplates()
 
 	apiClient := api.NewAPIClient(config)
 
@@ -47,12 +61,12 @@ func main() {
 
 	mux := http.NewServeMux()
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))
-	mux.Handle("/{$}", handler.Home(logger, templates, pageData))
-	mux.Handle("/biography", handler.Biography(logger, templates, pageData))
-	mux.Handle("/performances", handler.Performances(logger, templates, pageData))
-	mux.Handle("/media", handler.Media(logger, templates, pageData))
-	mux.Handle("/contact", handler.Contact(logger, templates, pageData))
-	mux.Handle("/", handler.NotFound(logger, templates))
+	mux.Handle("/{$}", handler.Home(logger, templates["home"], pageData))
+	mux.Handle("/biography", handler.Biography(logger, templates["biography"], pageData))
+	mux.Handle("/performances", handler.Performances(logger, templates["performances"], pageData))
+	mux.Handle("/media", handler.Media(logger, templates["media"], pageData))
+	mux.Handle("/contact", handler.Contact(logger, templates["contact"], pageData))
+	mux.Handle("/", handler.NotFound(logger, templates["404"]))
 
 	stack := middleware.NewStack(
 		middleware.Logging(logger),
@@ -63,6 +77,10 @@ func main() {
 		Handler: stack(mux),
 	}
 
-	logger.Printf("Listening on port %s\n", config.Port)
-	server.ListenAndServe()
+	logger.Printf("Listening on port %s ...\n", config.Port)
+
+	err = server.ListenAndServe()
+	if err != nil && err != http.ErrServerClosed {
+		log.Fatalf("Server failed to start: %v", err)
+	}
 }
