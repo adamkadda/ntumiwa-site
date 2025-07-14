@@ -32,10 +32,21 @@ func generateSessionID() string {
 	return base64.RawURLEncoding.EncodeToString(id)
 }
 
+func generateCSRFToken() string {
+	id := make([]byte, 32)
+
+	_, err := io.ReadFull(rand.Reader, id)
+	if err != nil {
+		panic("somehow failed to generate CSRF token")
+	}
+
+	return base64.RawURLEncoding.EncodeToString(id)
+}
+
 func NewSession() *Session {
 	return &Session{
 		id:             generateSessionID(),
-		data:           make(map[string]any),
+		data:           map[string]any{"csrf_token": generateCSRFToken()},
 		createdAt:      time.Now(),
 		lastActivityAt: time.Now(),
 	}

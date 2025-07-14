@@ -16,6 +16,8 @@ type SessionManager struct {
 	absoluteExpiration time.Duration
 	cookieName         string
 	domain             string
+	csrfFormKey        string
+	csrfHeader         string
 }
 
 func NewSessionManager(
@@ -198,15 +200,33 @@ func (m *SessionManager) Handle(next http.Handler) http.Handler {
 		/*
 			Add essential headers.
 
-			The first tells caches that the response may vary based on the Cookie header,
-			so they shouldn't serve the same cached response to all users. Instead, prepare
-			a separate cache for every variant (i.e. Cookie).
+			The first tells caches that the response may vary based
+			on the Cookie header, so they shouldn't serve the same
+			cached response to all users. Instead, prepare a separate
+			cache for every variant (i.e. Cookie).
 
-			The second prevents caching of responses that set cookies, forcing caches to
-			revalidate with the origin each time before reusing them.
+			The second prevents caching of responses that set cookies,
+			forcing caches to revalidate with the origin each time
+			before reusing them.
 		*/
 		w.Header().Add("Vary", "Cookie")
 		w.Header().Add("Cache-Control", `no-cache="Set-Cookie"`)
+
+		/*
+			Before performing state-changing requests, we first
+			verify the CSRF token, and fail the request if the token
+			does not match what is inside the session.
+		*/
+
+		if request.Method == http.MethodPost ||
+			request.Method == http.MethodPut ||
+			request.Method == http.MethodPatch ||
+			request.Method == http.MethodDelete {
+
+			if !m.verifyCSRFToken(session, request) {
+				http.Error(sw, "CSRF Token mismatch", http.StatusForbidden)
+			}
+		}
 
 		// Call the next handler
 		next.ServeHTTP(sw, request)
@@ -217,4 +237,20 @@ func (m *SessionManager) Handle(next http.Handler) http.Handler {
 		// Write cookie to response if needed
 		writeCookieIfNecessary(sw)
 	})
+}
+
+func (m *SessionManager) verifyCSRFToken(session *Session, r *http.Request) bool {
+	sessionCSRFToken, ok := session.Get("csrf_token").(string)
+	if !ok {
+		return false
+	}
+
+	requestCSRFToken := r.FormValue(m.csrfFormKey)
+
+	// NOTE: Just trying to keep it frontend agnostic
+	if requestCSRFToken == "" {
+		requestCSRFToken = r.Header.Get(m.csrfHeader)
+	}
+
+	return sessionCSRFToken == requestCSRFToken
 }
