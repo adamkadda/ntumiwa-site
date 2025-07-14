@@ -19,6 +19,7 @@ import (
 type Config struct {
 	API        APIClientConfig
 	DB         PostgresConfig
+	SessionMan SessionManagerConfig
 	Host       string
 	Port       string
 	ServerType string
@@ -45,6 +46,14 @@ type APIClientConfig struct {
 	MaxIdleConns        int
 	MaxIdleConnsPerHost int
 	IdleConnTimeout     time.Duration
+}
+
+type SessionManagerConfig struct {
+	GCInterval         time.Duration
+	IdleExpiration     time.Duration
+	AbsoluteExpiration time.Duration
+	CookieName         string
+	AdminDomain        string
 }
 
 func (pg *PostgresConfig) Connect() (*sql.DB, error) {
@@ -98,6 +107,13 @@ func LoadConfig() (*Config, error) {
 			MaxIdleConns:        getEnvInt("API_MAX_IDLE_CONNS", 100),
 			MaxIdleConnsPerHost: getEnvInt("API_MAX_IDLE_CONNS_PER_HOST", 100),
 		},
+		SessionMan: SessionManagerConfig{
+			GCInterval:         getEnvDuration("GC_INTERVAL", 1*time.Hour),
+			IdleExpiration:     getEnvDuration("SESSION_TTI", 1*time.Hour),
+			AbsoluteExpiration: getEnvDuration("SESSION_TTL", 8*time.Hour),
+			CookieName:         os.Getenv("SESSION_COOKIE_NAME"),
+			AdminDomain:        os.Getenv("ADMIN_DOMAIN"),
+		},
 	}
 
 	if config.ServerType == "" {
@@ -105,7 +121,15 @@ func LoadConfig() (*Config, error) {
 	}
 
 	if config.ServerType != "API" && config.API.BaseURL == "" {
-		return nil, fmt.Errorf("[API_CONFIG] API_BASE_URL not set")
+		return nil, fmt.Errorf("ERROR: API_BASE_URL not set")
+	}
+
+	if config.ServerType == "API" && config.SessionMan.CookieName == "" {
+		return nil, fmt.Errorf("ERROR: COOKIE_NAME not set")
+	}
+
+	if config.ServerType == "API" && config.SessionMan.AdminDomain == "" {
+		return nil, fmt.Errorf("ERROR: ADMIN_DOMAIN not set")
 	}
 
 	return config, nil
