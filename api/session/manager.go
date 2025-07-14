@@ -162,6 +162,7 @@ func (m *SessionManager) migrate(session *Session) error {
 	}
 
 	session.id = generateSessionID()
+	session.Put("csrf_token", generateCSRFToken())
 
 	return nil
 }
