@@ -16,8 +16,6 @@ type SessionManager struct {
 	absoluteExpiration time.Duration
 	cookieName         string
 	domain             string
-	csrfFormKey        string
-	csrfHeader         string
 }
 
 func NewSessionManager(
@@ -245,11 +243,11 @@ func (m *SessionManager) verifyCSRFToken(session *Session, r *http.Request) bool
 		return false
 	}
 
-	requestCSRFToken := r.FormValue(m.csrfFormKey)
+	requestCSRFToken := r.FormValue("csrf_token")
 
 	// NOTE: Just trying to keep it frontend agnostic
 	if requestCSRFToken == "" {
-		requestCSRFToken = r.Header.Get(m.csrfHeader)
+		requestCSRFToken = r.Header.Get("X-XSRF-Token")
 	}
 
 	return sessionCSRFToken == requestCSRFToken
